@@ -1,6 +1,7 @@
 const express = require ('express');
 const passport = require ('passport')
 require("dotenv").config();
+const port = process.env.PORT 
 const app = express ();
 const session = require('express-session');
 app.use(
@@ -55,8 +56,8 @@ res.send(`Hello ${req.user.displayName}`)
 app.get ('/logout', (req, res) => {
     res.clearCookie("access_token");
     req.session.destroy();
-    return res.send ('Goodbye!!!!!!');
+    return res.send (`Goodbye ${req.user.displayName}`);
   });
 
 
- app.listen (9450, () => console.log ('listening on : 9450'));
+ app.listen (port, () => console.log (`Server up and running on port http://localhost:${port}`));
