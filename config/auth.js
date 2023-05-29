@@ -18,7 +18,7 @@ passport.serializeUser((user, done) => {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:9450/google/callback"
+    callbackURL: "https://google-three-flax.vercel.app/google/callback"
   },
   function(accessToken, refreshToken, profile, done)  {
     console.log(profile);
