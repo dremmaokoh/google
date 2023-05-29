@@ -1,5 +1,6 @@
 # Google
 A simple google authentication using passport-google-oauth2 
+saving user to database
 
 Stack Used
 ```````````
@@ -15,6 +16,7 @@ Packages Installed
 >- passport : to authenticate requests
 >- Dotenv : Hide my keys
 >- Nodemon : Restart the server
+>- mongodb : Database
 
 `````````````
 
