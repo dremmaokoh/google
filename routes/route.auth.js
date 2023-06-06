@@ -14,7 +14,7 @@ function isLoggedIn(req, res, next) {
   
   //to take care of callaback
   router.get("/google/callback", passport.authenticate("google"), (req, res) => {
-    res.redirect("auth/protected");
+    res.redirect("/auth/protected");
   });
   
   // to handle auth/failure
