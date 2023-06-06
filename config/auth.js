@@ -18,7 +18,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://google-three-flax.vercel.app/google/callback",
+      callbackURL: "/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);
