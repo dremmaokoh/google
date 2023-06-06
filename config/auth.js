@@ -18,7 +18,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/google/callback",
+      callbackURL: "https://clean-puce-panther.cyclic.app/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);
