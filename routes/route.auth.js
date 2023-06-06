@@ -8,7 +8,7 @@ function isLoggedIn(req, res, next) {
   //declaring what happens with the link above
   //scope is what kind of information do you want to retrive from the customer's profile
   router.get(
-    "/auth/google",
+    "/google",
     passport.authenticate("google", { scope: ["email", "profile"] })
   );
   
@@ -18,7 +18,7 @@ function isLoggedIn(req, res, next) {
   });
   
   // to handle auth/failure
-  router.get("/auth/failure", (req, res) => {
+  router.get("/failure", (req, res) => {
     res.send("something went wrong .....");
   });
   
