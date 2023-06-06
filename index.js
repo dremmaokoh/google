@@ -27,7 +27,6 @@ connectDB();
 //we want this user to become part of the request when someone logs in, we use espress-session for session management
 
 app.get("/", (req, res) => {
-  res.status(200).json({ message: 'WELCOME TO PISHON 🍀🍀🍀' })
   res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
 
