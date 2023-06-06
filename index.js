@@ -3,6 +3,7 @@ const User = require("./models/models.user");
 const passport = require("passport");
 require("dotenv").config();
 const connectDB = require("./config/db.js");
+const authRoutes = require("./routes/route.auth");
 const port = process.env.PORT;
 const app = express();
 const session = require("express-session");
@@ -23,41 +24,14 @@ require("dotenv").config();
 //Connecting to database
 connectDB();
 
-//function to check if our user is logged in via middleware
-function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
-}
 //we want this user to become part of the request when someone logs in, we use espress-session for session management
 
 app.get("/", (req, res) => {
   res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
-//declaring what happens with the link above
-//scope is what kind of information do you want to retrive from the customer's profile
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
 
-//to take care of callaback
-app.get("/google/callback", passport.authenticate("google"), (req, res) => {
-  res.redirect("/protected");
-});
+app.use("/auth", authRoutes);
 
-// to handle auth/failure
-app.get("/auth/failure", (req, res) => {
-  res.send("something went wrong .....");
-});
-
-app.get("/protected", isLoggedIn, (req, res) => {
-  res.send(`Hello ${req.user.username}`);
-});
-
-app.get("/logout", (req, res) => {
-  res.clearCookie("access_token");
-  req.session.destroy();
-  return res.send(`Goodbye`);
-});
 
 app.listen(port, () =>
   console.log(`Server up and running on port http://localhost:${port}`)
